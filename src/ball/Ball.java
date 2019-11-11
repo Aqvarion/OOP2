@@ -1,4 +1,4 @@
-package BallGo;
+package ball;
 
 public class Ball {
     public Ball(float x, float y, int radius, int speed, int direction) {
@@ -70,20 +70,33 @@ public class Ball {
 
     @Override
     public String toString() {
-        return "Ball{" +
+        return "{" +
                 "(" + x +
                 "," + y +
                 "),speed=("+xDelta+","+yDelta+")}";
     }
 
-    public static void main(String[] args) {
-        Ball ball = new Ball(15,3,2,40,20);
-        Container container = new Container(10,10,20,10);
-        System.out.println(ball);
-        System.out.println("Ball in container? "+container.collides(ball));
-        System.out.println("Ball move");
-        ball.move();
-        System.out.println(ball);
-        System.out.println("Ball in container? "+container.collides(ball));
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Ball)) return false;
+        Ball ball = (Ball) o;
+        return Float.compare(ball.x, x) == 0 &&
+                Float.compare(ball.y, y) == 0 &&
+                radius == ball.radius &&
+                Float.compare(ball.xDelta, xDelta) == 0 &&
+                Float.compare(ball.yDelta, yDelta) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 37;
+        int result = 17;
+        result = prime*result+Float.floatToIntBits(x);
+        result = prime*result+Float.floatToIntBits(y);
+        result = prime*result+radius;
+        result = prime*result+Float.floatToIntBits(xDelta);
+        result = prime*result+Float.floatToIntBits(yDelta);
+        return result;
     }
 }

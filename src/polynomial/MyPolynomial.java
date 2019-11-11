@@ -1,6 +1,4 @@
-package PolynomialGo;
-
-import java.util.Arrays;
+package polynomial;
 
 public class MyPolynomial {
     private double[] coeffs;

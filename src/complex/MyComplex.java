@@ -1,6 +1,4 @@
-package ComplexGo;
-
-import java.util.Objects;
+package complex;
 
 public class MyComplex {
     double real=0.0;
